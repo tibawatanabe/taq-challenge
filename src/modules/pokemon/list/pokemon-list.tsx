@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { listQuery, PokemonSummary } from '../../data/pokemon-list.query';
+import { listQuery, PokemonSummary } from '../../../data/pokemon-list.query';
 import { PokemonItemComponent } from './pokemon-item.component';
+import { Link } from 'react-router-dom';
+import * as PokemonDetail from '../detail';
 
 export const PokemonList: React.FC = () => {
   const [ loading, setLoading ] = useState(true);
@@ -22,14 +24,12 @@ export const PokemonList: React.FC = () => {
     return(<>{error!.message || 'Oops, something went wrong'}</>);
   }
 
-
   return (
     <>
       {pokemons.map(pokemon => (
-        <PokemonItemComponent
-          {...pokemon}
-          key={pokemon.id}
-        />
+        <Link key={pokemon.id} to={PokemonDetail.path(pokemon.name, pokemon.id)}>
+          <PokemonItemComponent {...pokemon} />
+        </Link>
       ))}
     </>
   );
