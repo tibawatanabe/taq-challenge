@@ -44,7 +44,7 @@ export interface Pokemon {
   fleeRate: number;
   maxCP: number;
   maxHP: number;
-  evolutions: PokemonSummary;
+  evolutions: PokemonSummary[];
 }
 
 export async function fetchQuery(id: string, name: string): Promise<Pokemon> {
