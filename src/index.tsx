@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { config } from './data/graphql-client';
+
+config('https://graphql-pokemon.now.sh/');
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
